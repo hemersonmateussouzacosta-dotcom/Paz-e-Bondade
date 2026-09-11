@@ -1,0 +1,6 @@
+{
+  "name": "Pax et Bonum",
+  "description": "Rezando com São Frei Galvão (Novena das Pílulas, Devoções e Milagres), Liturgia Diária 1962 e Terços com áudio sacro.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
