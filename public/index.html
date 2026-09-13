@@ -2,882 +2,1535 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rezando com São Frei Galvão & Devocionário Tradicional</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Pax et Bonum - São Frei Galvão & Devocionário</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary: #4A2E18;
-      --primary-light: #5C3D24;
-      --gold: #C59B27;
-      --gold-light: #F7F0DF;
-      --bg: #F8F5EF;
-      --surface: #FFFFFF;
-      --text: #2C1D11;
-      --text-muted: #735438;
-      --border: #E5DAC8;
-      --red-rubric: #8E2800;
+      --primary: #5E3520;
+      --primary-dark: #381F13;
+      --primary-light: #8D5335;
+      --primary-container: #F1E4DC;
+      --on-primary-container: #381F13;
+      --gold: #C48A2C;
+      --gold-light: #F7EEDB;
+      --gold-dark: #8C5F16;
+      --rubric-red: #9E2A2B;
+      --bg: #F9F6EE;
+      --surface: #F3EDE0;
+      --surface-variant: #E8DFCD;
+      --text: #261D17;
+      --text-muted: #5C4E43;
+      --border: #D8CCA8;
+      --font-scale: 1;
+      --app-radius: 28px;
+    }
+
+    body.theme-alba {
+      --bg: #FFFFFF;
+      --surface: #F7F5F0;
+      --surface-variant: #ECE7DC;
+      --text: #140E0A;
+      --text-muted: #4A3E36;
+      --border: #E0D7C6;
+      --primary-container: #F3EAE3;
+    }
+
+    body.theme-dark {
+      --bg: #14100D;
+      --surface: #201A16;
+      --surface-variant: #2E241E;
+      --text: #EFE8DF;
+      --text-muted: #A89C8F;
+      --border: #42362C;
+      --primary: #E5B25D;
+      --primary-container: #381F13;
+      --on-primary-container: #E5B25D;
+      --primary-light: #C48A2C;
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      -webkit-tap-highlight-color: transparent;
     }
 
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background-color: var(--bg);
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #1E1B18;
       color: var(--text);
-      line-height: 1.6;
-      padding-bottom: 60px;
-    }
-
-    .font-serif {
-      font-family: 'Playfair Display', Georgia, serif;
-    }
-
-    .font-cinzel {
-      font-family: 'Cinzel', serif;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 20px 16px;
-    }
-
-    /* Header */
-    header {
-      text-align: center;
-      padding: 30px 16px 24px;
-      background: linear-gradient(180deg, #FFFFFF 0%, #F5EDE0 100%);
-      border-bottom: 2px solid var(--gold);
-      border-radius: 0 0 24px 24px;
-      box-shadow: 0 4px 20px rgba(74, 46, 24, 0.08);
-      margin-bottom: 24px;
-    }
-
-    .badge-gold {
-      display: inline-block;
-      background-color: var(--gold);
-      color: #1A1208;
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      padding: 4px 12px;
-      border-radius: 20px;
-      margin-bottom: 10px;
-    }
-
-    h1 {
-      color: var(--primary);
-      font-size: 28px;
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
-
-    .subtitle {
-      color: var(--text-muted);
-      font-style: italic;
-      font-size: 15px;
-      max-width: 600px;
-      margin: 0 auto 16px;
-    }
-
-    /* Antiphon Banner */
-    .antiphon-box {
-      background: #FFFDF9;
-      border: 1px solid var(--gold);
-      border-left: 5px solid var(--gold);
-      border-radius: 12px;
-      padding: 16px 20px;
-      margin-top: 14px;
-      text-align: left;
-    }
-
-    .antiphon-latin {
-      color: var(--primary);
-      font-weight: 700;
-      font-size: 16px;
-      margin-bottom: 4px;
-    }
-
-    .antiphon-pt {
-      color: var(--text-muted);
-      font-size: 14px;
-      font-style: italic;
-    }
-
-    /* Tabs */
-    .tabs-nav {
       display: flex;
-      gap: 8px;
-      overflow-x: auto;
-      padding: 4px 0 16px;
-      scrollbar-width: none;
-    }
-    .tabs-nav::-webkit-scrollbar { display: none; }
-
-    .tab-btn {
-      background-color: var(--surface);
-      color: var(--text-muted);
-      border: 1px solid var(--border);
-      padding: 10px 18px;
-      border-radius: 12px;
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: all 0.2s ease;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      overflow-x: hidden;
     }
 
-    .tab-btn:hover {
-      background-color: #F1E9DC;
-      color: var(--primary);
+    /* Device Mockup Shell */
+    .device-wrapper {
+      width: 100%;
+      max-width: 440px;
+      height: 94vh;
+      max-height: 920px;
+      background: var(--bg);
+      border-radius: var(--app-radius);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45), 0 0 0 8px #2C2825;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
     }
 
-    .tab-btn.active {
-      background-color: var(--primary);
-      color: #FFFFFF;
-      border-color: var(--primary);
-      box-shadow: 0 4px 10px rgba(74, 46, 24, 0.2);
+    @media (max-width: 600px) {
+      body {
+        background: var(--bg);
+      }
+      .device-wrapper {
+        max-width: 100%;
+        height: 100vh;
+        max-height: 100vh;
+        border-radius: 0;
+        box-shadow: none;
+      }
     }
 
-    /* Card Panels */
-    .card {
+    /* Android Status Bar */
+    .status-bar {
+      height: 36px;
       background: var(--surface);
-      border-radius: 16px;
-      border: 1px solid var(--border);
-      padding: 24px;
-      margin-bottom: 20px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 16px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      z-index: 50;
+      flex-shrink: 0;
+      border-bottom: 1px solid var(--border);
     }
 
-    .card-title {
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--primary);
-      margin-bottom: 8px;
+    .status-icons {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Franciscan Header */
+    .app-header {
+      background: var(--surface);
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+      z-index: 40;
+    }
+
+    .header-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
 
-    /* Day Carousel */
-    .days-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-      gap: 8px;
-      margin: 16px 0 20px;
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
 
-    .day-chip {
-      background: var(--surface);
-      border: 1.5px solid var(--border);
-      border-radius: 12px;
-      padding: 10px 6px;
-      text-align: center;
+    .tau-badge {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--primary-container);
+      border: 1px solid var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cinzel', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--primary);
+      flex-shrink: 0;
+    }
+
+    .header-titles h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.2;
+    }
+
+    .header-titles p {
+      font-size: 11px;
+      color: var(--text-muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 210px;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .icon-btn {
+      background: transparent;
+      border: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       cursor: pointer;
+      color: var(--primary);
+      transition: background 0.2s;
+    }
+    .icon-btn:hover {
+      background: var(--surface-variant);
+    }
+
+    .liturgical-badge {
+      padding: 3px 8px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border: 1px solid rgba(0,0,0,0.15);
+    }
+
+    /* Screen Viewport */
+    .screen-viewport {
+      flex: 1;
+      overflow-y: auto;
+      padding: 12px 14px 100px;
+      scroll-behavior: smooth;
+    }
+    .screen-viewport::-webkit-scrollbar {
+      width: 4px;
+    }
+    .screen-viewport::-webkit-scrollbar-thumb {
+      background: var(--border);
+      border-radius: 4px;
+    }
+
+    /* Material 3 Bottom Navigation Bar */
+    .bottom-nav {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 8px 6px 14px;
+      z-index: 50;
+      box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.06);
+    }
+
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--text-muted);
+      flex: 1;
+      position: relative;
+    }
+
+    .nav-pill {
+      width: 56px;
+      height: 30px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+    }
+
+    .nav-item.active .nav-pill {
+      background: var(--primary-container);
+      color: var(--primary);
+    }
+
+    .nav-item.active .nav-label {
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .nav-label {
+      font-size: 11px;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    /* Mini Player */
+    .mini-player {
+      position: absolute;
+      bottom: 74px;
+      left: 12px;
+      right: 12px;
+      background: var(--primary);
+      color: white;
+      border-radius: 14px;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+      z-index: 45;
+      cursor: pointer;
+      animation: slideUp 0.3s ease-out;
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .mini-info h4 {
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .mini-info p {
+      font-size: 11px;
+      opacity: 0.85;
+    }
+
+    /* Cards & Components */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 16px;
+      margin-bottom: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .card-title {
+      font-family: 'Cinzel', serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Subtabs inside screen */
+    .subtabs-scroll {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      margin-bottom: 12px;
+      scrollbar-width: none;
+    }
+    .subtabs-scroll::-webkit-scrollbar { display: none; }
+
+    .chip-tab {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
       transition: all 0.2s;
     }
-
-    .day-chip:hover {
-      border-color: var(--gold);
-      background-color: #FAF5EB;
+    .chip-tab.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
     }
 
-    .day-chip.active {
-      border-color: var(--gold);
-      background-color: var(--gold-light);
-      box-shadow: 0 0 0 2px var(--gold);
-    }
-
-    .day-chip.completed {
-      background-color: #F3F8F1;
-      border-color: #7AA874;
-    }
-
-    .day-chip .pill-tag {
-      font-size: 10px;
-      color: var(--red-rubric);
-      font-weight: 700;
-      display: block;
-      margin-top: 3px;
-    }
-
-    .pill-alert {
-      background: #FFF5EE;
-      border: 1px solid var(--red-rubric);
-      border-radius: 10px;
-      padding: 12px 16px;
-      margin: 14px 0;
-      color: var(--red-rubric);
-      font-size: 14px;
-      font-weight: 500;
-    }
-
-    .prayer-content {
-      background-color: #FAF7F2;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 16px;
-      font-size: 15px;
-      line-height: 1.8;
-      margin: 14px 0;
-    }
-
-    /* Action Buttons */
+    /* Buttons */
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      padding: 12px 20px;
+      gap: 6px;
+      padding: 10px 16px;
       border-radius: 10px;
-      font-weight: 600;
-      font-size: 14px;
-      cursor: pointer;
-      border: none;
-      transition: all 0.2s;
-    }
-
-    .btn-primary {
-      background-color: var(--primary);
-      color: white;
-    }
-    .btn-primary:hover {
-      background-color: var(--primary-light);
-    }
-
-    .btn-gold {
-      background-color: var(--gold);
-      color: #1A1208;
-    }
-    .btn-gold:hover {
-      background-color: #B58B1E;
-    }
-
-    .btn-outline {
-      background-color: transparent;
-      border: 1.5px solid var(--border);
-      color: var(--text-muted);
-    }
-    .btn-outline:hover {
-      background-color: #EEE4D5;
-      color: var(--primary);
-    }
-
-    /* Rosary / Terço View */
-    .mystery-nav {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-bottom: 16px;
-    }
-
-    .decade-badge {
-      display: inline-block;
-      background: var(--gold-light);
-      color: var(--primary);
-      border: 1px solid var(--gold);
-      padding: 2px 8px;
-      border-radius: 6px;
-      font-size: 12px;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-
-    .progress-bar-container {
-      background: #EAE1D3;
-      border-radius: 10px;
-      height: 8px;
-      width: 100%;
-      overflow: hidden;
-      margin-bottom: 16px;
-    }
-
-    .progress-bar {
-      height: 100%;
-      background: var(--gold);
-      width: 0%;
-      transition: width 0.3s ease;
-    }
-
-    /* Forms */
-    .form-group {
-      margin-bottom: 12px;
-    }
-    .form-group label {
-      display: block;
       font-size: 13px;
       font-weight: 600;
-      margin-bottom: 4px;
+      cursor: pointer;
+      border: none;
+      transition: 0.2s;
     }
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+    .btn-gold {
+      background: var(--gold);
+      color: #1A1208;
+      font-weight: 700;
+    }
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+    .btn-outline:hover {
+      background: var(--surface-variant);
+    }
+
+    /* Novena Day Carousel */
+    .days-row {
+      display: grid;
+      grid-template-columns: repeat(9, 1fr);
+      gap: 4px;
+      margin: 10px 0 14px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+    .day-box {
+      background: var(--surface-variant);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 6px 2px;
+      text-align: center;
+      cursor: pointer;
+      min-width: 38px;
+      transition: all 0.2s;
+    }
+    .day-box.active {
+      background: var(--gold-light);
+      border-color: var(--gold);
+      box-shadow: 0 0 0 1.5px var(--gold);
+    }
+    .day-box.done {
+      background: #E8F5E9;
+      border-color: #81C784;
+    }
+
+    /* Liturgy Proper Section */
+    .proper-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+      margin-bottom: 10px;
+    }
+    .proper-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--rubric-red);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .proper-content {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: calc(14px * var(--font-scale));
+      line-height: 1.7;
+    }
+    .bilingual-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    @media (max-width: 400px) {
+      .bilingual-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Modal Sheet */
+    .modal-overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 100;
+      display: none;
+      align-items: flex-end;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal-sheet {
+      width: 100%;
+      background: var(--surface);
+      border-radius: 24px 24px 0 0;
+      padding: 20px 18px 28px;
+      max-height: 80vh;
+      overflow-y: auto;
+      border-top: 2px solid var(--gold);
+      animation: sheetUp 0.25s ease-out;
+    }
+    @keyframes sheetUp {
+      from { transform: translateY(100%); }
+      to { transform: translateY(0); }
+    }
+
+    .pill-alert {
+      background: #FFF5EE;
+      border-left: 4px solid var(--rubric-red);
+      border-radius: 8px;
+      padding: 10px 14px;
+      margin: 10px 0;
+      font-size: 13px;
+      color: var(--rubric-red);
+      font-weight: 600;
+    }
+
+    .interactive-beads {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      justify-content: center;
+      margin: 14px 0;
+    }
+    .bead {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--surface-variant);
+      border: 1px solid var(--border);
+      transition: all 0.2s;
+    }
+    .bead.large {
+      width: 18px;
+      height: 18px;
+      border-color: var(--gold);
+    }
+    .bead.done {
+      background: var(--gold);
+      border-color: var(--gold-dark);
+    }
+    .bead.current {
+      background: var(--rubric-red);
+      transform: scale(1.3);
+      box-shadow: 0 0 6px var(--rubric-red);
+    }
+
     .form-control {
       width: 100%;
-      padding: 10px 14px;
-      border-radius: 8px;
+      padding: 10px 12px;
       border: 1px solid var(--border);
-      font-size: 14px;
-      font-family: inherit;
+      background: var(--bg);
+      color: var(--text);
+      border-radius: 8px;
+      font-size: 13px;
+      margin-top: 4px;
     }
     .form-control:focus {
       outline: none;
       border-color: var(--gold);
-      box-shadow: 0 0 0 2px var(--gold-light);
     }
 
-    .intention-item {
-      background: #FAF8F5;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 14px;
-      margin-bottom: 10px;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 12px;
+    /* Android gesture pill at bottom */
+    .home-bar {
+      position: absolute;
+      bottom: 4px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 72px;
+      height: 4px;
+      background: var(--text-muted);
+      border-radius: 2px;
+      opacity: 0.4;
+      pointer-events: none;
+      z-index: 60;
     }
-
-    .hidden { display: none; }
   </style>
 </head>
-<body>
+<body class="theme-sepia">
 
-  <!-- Header & Antífona -->
-  <header>
-    <div class="container">
-      <span class="badge-gold">Primeiro Santo Brasileiro</span>
-      <h1 class="font-cinzel">Rezando com São Frei Galvão</h1>
-      <p class="subtitle">«Pelas mãos de Maria Imaculada, alívio dos doentes e consolo nas aflições»</p>
-
-      <div class="antiphon-box">
-        <p class="antiphon-latin font-serif">«Post partum, Virgo, inviolata permansisti: Dei Genitrix, intercede pro nobis.»</p>
-        <p class="antiphon-pt">«Depois do parto, ó Virgem, permaneceste intacta: Mãe de Deus, intercedei por nós!»</p>
+  <div class="device-wrapper">
+    <!-- Android Status Bar -->
+    <div class="status-bar">
+      <span id="live-clock">12:00</span>
+      <div class="status-icons">
+        <span>5G</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4C7.31 4 3.07 5.9 0 8.98L12 21 24 8.98C20.93 5.9 16.69 4 12 4z"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg>
       </div>
     </div>
-  </header>
 
-  <div class="container">
-    <!-- Navegação de Abas -->
-    <nav class="tabs-nav" role="tablist">
-      <button class="tab-btn active" onclick="switchTab('novena')">Novena das Pílulas (9 Dias)</button>
-      <button class="tab-btn" onclick="switchTab('pilulas')">O Mistério das Pílulas</button>
-      <button class="tab-btn" onclick="switchTab('terco')">Santo Terço Tradicional</button>
-      <button class="tab-btn" onclick="switchTab('devocionario')">Devocionário Oficial</button>
-      <button class="tab-btn" onclick="switchTab('preces')">Livro de Preces</button>
+    <!-- Franciscan Header -->
+    <header class="app-header">
+      <div class="header-row">
+        <div class="header-left">
+          <div class="tau-badge">Τ</div>
+          <div class="header-titles">
+            <h1 id="screen-title">São Frei Galvão</h1>
+            <p id="screen-subtitle">Novena das Pílulas, Devoções & Milagres</p>
+          </div>
+        </div>
+        <div class="header-actions">
+          <span id="header-liturgy-badge" class="liturgical-badge" style="display:none; background:#EFEFEA; color:#000;">Branco</span>
+          <button class="icon-btn" onclick="openAppearanceModal()" title="Ajustar Fonte e Tema">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M9 4v3h5v12h3V7h5V4H9zm-6 8h3v7h3v-7h3V9H3v3z"/></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Screens Container -->
+    <main class="screen-viewport">
+
+      <!-- ================= SCREEN 1: FREI GALVÃO ================= -->
+      <div id="screen-frei-galvao" class="app-screen">
+        <div class="subtabs-scroll">
+          <button class="chip-tab active" onclick="switchFreiSubtab('novena', this)">Novena das Pílulas</button>
+          <button class="chip-tab" onclick="switchFreiSubtab('pilulas', this)">O Mistério das Pílulas</button>
+          <button class="chip-tab" onclick="switchFreiSubtab('devocoes', this)">Orações & Milagres</button>
+          <button class="chip-tab" onclick="switchFreiSubtab('preces', this)">Livro de Preces</button>
+        </div>
+
+        <!-- Subtab Novena -->
+        <div id="subtab-novena">
+          <div class="card" style="background: linear-gradient(135deg, var(--surface) 0%, var(--surface-variant) 100%);">
+            <div style="font-size: 11px; font-weight: 700; color: var(--gold); letter-spacing: 1px; text-transform: uppercase;">Primeiro Santo Brasileiro</div>
+            <h2 style="font-family: 'Cinzel', serif; font-size: 17px; margin: 4px 0; color: var(--primary);">A Grande Novena das Pílulas</h2>
+            <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 8px;">Reze durante 9 dias seguidos. As Pílulas são tomadas no 1º, 5º e 9º dia.</p>
+            <div style="font-size: 12px; font-weight: 600; color: var(--gold);" id="novena-progress-badge">0 de 9 dias rezados</div>
+            
+            <div class="days-row" id="novena-days-row"></div>
+          </div>
+
+          <div class="card" id="novena-detail-card">
+            <div class="card-header">
+              <h3 id="day-title" class="card-title">1º Dia — O Dom da Fé e Caridade</h3>
+              <span id="pill-badge" style="background: var(--rubric-red); color: white; padding: 2px 8px; border-radius: 10px; font-size: 10px; font-weight: 700;">💊 Pílula</span>
+            </div>
+            <div id="day-virtue" style="font-size: 12px; font-weight: 600; color: var(--gold); margin-bottom: 8px;">Virtude: Fé Viva e Amor Maternal</div>
+            <div id="pill-instruction" class="pill-alert"></div>
+            
+            <div style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 700; margin-bottom: 4px;">Oração do Dia:</div>
+            <div id="day-prayer" class="proper-content" style="background: var(--bg); padding: 12px; border-radius: 10px; border: 1px solid var(--border);"></div>
+
+            <div style="display: flex; gap: 8px; margin-top: 14px;">
+              <button id="btn-toggle-day" class="btn btn-gold" style="flex: 1;" onclick="toggleCurrentDay()">Marcar como Rezado</button>
+              <button class="btn btn-outline" onclick="resetNovena()">Reiniciar</button>
+            </div>
+          </div>
+
+          <!-- Antiphona Box -->
+          <div class="card" style="border-left: 4px solid var(--gold);">
+            <div style="font-size: 11px; font-weight: 700; color: var(--primary); text-transform: uppercase;">Antífona Escrita nas Pílulas</div>
+            <p style="font-family: 'Playfair Display', serif; font-size: 14px; font-style: italic; margin-top: 4px; color: var(--text);">
+              «Post partum, Virgo, inviolata permansisti: Dei Genitrix, intercede pro nobis.»
+            </p>
+            <p style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">
+              «Depois do parto, ó Virgem, permaneceste intacta: Mãe de Deus, intercedei por nós!»
+            </p>
+          </div>
+        </div>
+
+        <!-- Subtab Pílulas -->
+        <div id="subtab-pilulas" style="display: none;">
+          <div class="card">
+            <h3 class="card-title">Origem das Santas Pílulas</h3>
+            <p style="font-size: 13px; line-height: 1.6; margin: 8px 0; color: var(--text);">
+              Em 1774, Frei Galvão recebeu o pedido aflito de socorrer um jovem agonizando com fortes cálculos renais. Impedido de ir ao local, escreveu em 3 pequeninos papéis a antífona mariana, enrolou-os em pílulas e ordenou que engolissem com fé. O enfermo expeliu as pedras na mesma hora.
+            </p>
+            <div class="pill-alert">
+              <strong>Como Tomar as Pílulas:</strong><br>
+              • 1ª Pílula: 1º dia da novena com 1 Pai Nosso, 1 Ave Maria, 1 Glória.<br>
+              • 2ª Pílula: 5º dia da novena, pedindo o alívio das aflições.<br>
+              • 3ª Pílula: 9º dia da novena com preces em ação de graças.
+            </div>
+          </div>
+        </div>
+
+        <!-- Subtab Devoções & Milagres -->
+        <div id="subtab-devocoes" style="display: none;">
+          <div class="card">
+            <div class="proper-title">Oração Oficial de Canonização</div>
+            <p class="proper-content" style="font-style: italic;">
+              «Deus, Pai de misericórdia, que fizestes de Santo Antônio de Sant'Ana Galvão um instrumento de caridade e paz, concedei-nos, por sua intercessão, a fidelidade ao Evangelho e o alívio em todas as nossas aflições corporais e espirituais. Dai saúde aos nossos enfermos, proteção às mães e nascituros, por Cristo Nosso Senhor. Amém.»
+            </p>
+          </div>
+          <div class="card">
+            <div class="proper-title">Oração pelas Gestantes e Parto Feliz</div>
+            <p class="proper-content" style="font-style: italic;">
+              «São Frei Galvão, compassivo protetor das mães que dão à luz, livrai as gestantes de todo perigo corporal e concedei um parto santo e sereno sob o manto da Virgem Maria. Rogai por nós, servo fiel de Deus. Amém.»
+            </p>
+          </div>
+        </div>
+
+        <!-- Subtab Livro de Preces -->
+        <div id="subtab-preces" style="display: none;">
+          <div class="card">
+            <h3 class="card-title">Mural de Preces & Graças</h3>
+            <form id="form-intention" onsubmit="addIntention(event)" style="margin-top: 10px;">
+              <input type="text" id="int-name" class="form-control" placeholder="Seu nome ou iniciais" required>
+              <select id="int-cat" class="form-control" style="margin-top: 6px;">
+                <option value="Saúde & Cura">Saúde & Cura Renal</option>
+                <option value="Gestação & Parto">Gestação & Parto Feliz</option>
+                <option value="Família & Paz">Família & Paz no Lar</option>
+                <option value="Ação de Graças">Ação de Graças</option>
+              </select>
+              <textarea id="int-text" class="form-control" rows="2" style="margin-top: 6px;" placeholder="Escreva a sua intenção a Frei Galvão..." required></textarea>
+              <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 8px;">Confiar Prece ao Santo</button>
+            </form>
+          </div>
+          <div id="intentions-container"></div>
+        </div>
+      </div>
+
+      <!-- ================= SCREEN 2: LITURGIA 1962 ================= -->
+      <div id="screen-liturgia" class="app-screen" style="display: none;">
+        <div class="subtabs-scroll" id="liturgy-dates-scroll"></div>
+
+        <div class="card" style="margin-bottom: 8px;">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <span id="lit-season" style="font-size: 11px; font-weight: 700; color: var(--gold); text-transform: uppercase;"></span>
+              <h2 id="lit-day-title" style="font-family: 'Cinzel', serif; font-size: 16px; color: var(--primary);"></h2>
+              <div id="lit-class" style="font-size: 11px; color: var(--text-muted);"></div>
+            </div>
+            <div id="lit-color-chip" class="liturgical-badge">Branco</div>
+          </div>
+
+          <!-- Bilingual Mode Switcher -->
+          <div style="display: flex; gap: 6px; margin-top: 12px; border-top: 1px solid var(--border); padding-top: 10px;">
+            <button class="chip-tab active" onclick="setLiturgyMode('both', this)">Bilíngue</button>
+            <button class="chip-tab" onclick="setLiturgyMode('pt', this)">Português</button>
+            <button class="chip-tab" onclick="setLiturgyMode('lat', this)">Latim</button>
+          </div>
+        </div>
+
+        <div id="liturgy-propers-container"></div>
+      </div>
+
+      <!-- ================= SCREEN 3: TERÇOS & ÁUDIO ================= -->
+      <div id="screen-terco" class="app-screen" style="display: none;">
+        <div class="subtabs-scroll">
+          <button class="chip-tab active" onclick="selectRosary('FRANCISCAN', this)">Coroa Franciscana (7)</button>
+          <button class="chip-tab" onclick="selectRosary('JOYFUL', this)">Gozosos</button>
+          <button class="chip-tab" onclick="selectRosary('SORROWFUL', this)">Dolorosos</button>
+          <button class="chip-tab" onclick="selectRosary('GLORIOUS', this)">Gloriosos</button>
+          <button class="chip-tab" onclick="selectRosary('MERCY', this)">Misericórdia</button>
+        </div>
+
+        <!-- Rosary Bead Tracker Card -->
+        <div class="card">
+          <div class="card-header">
+            <span id="rosary-title" style="font-size: 13px; font-weight: 700; color: var(--primary);">Coroa das 7 Alegrias</span>
+            <span id="rosary-counter" style="font-size: 12px; font-weight: 700; color: var(--gold);">Conta 1 de 72</span>
+          </div>
+
+          <div class="interactive-beads" id="beads-visualizer"></div>
+
+          <div style="background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 14px; margin: 10px 0;">
+            <div id="bead-type-badge" style="display: inline-block; font-size: 11px; font-weight: 700; background: var(--gold-light); color: var(--gold-dark); padding: 2px 8px; border-radius: 6px; margin-bottom: 6px;">
+              1º Mistério
+            </div>
+            <h3 id="current-prayer-title" style="font-family: 'Cinzel', serif; font-size: 15px; color: var(--primary); margin-bottom: 6px;">A Anunciação do Arcanjo Gabriel</h3>
+            <p id="current-prayer-text" class="proper-content" style="font-size: 13px; color: var(--text);"></p>
+          </div>
+
+          <!-- Controls -->
+          <div style="display: flex; gap: 8px; justify-content: space-between; align-items: center; margin-top: 10px;">
+            <button class="btn btn-outline" onclick="prevBead()">Anterior</button>
+            <button id="btn-audio-drone" class="btn btn-gold" onclick="toggleSacredAudio()">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+              <span>Áudio Sacro</span>
+            </button>
+            <button class="btn btn-primary" onclick="nextBead()">Avançar Conta →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= SCREEN 4: AJUSTES & LEMBRETES ================= -->
+      <div id="screen-ajustes" class="app-screen" style="display: none;">
+        <div class="card">
+          <h3 class="card-title">Lembretes & Horas Canônicas</h3>
+          <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px;">Ative os toques devocionais para rezar com a Tradição Franciscana.</p>
+
+          <div id="reminders-list" style="display: flex; flex-direction: column; gap: 8px;"></div>
+        </div>
+
+        <div class="card">
+          <h3 class="card-title">Aparência de Leitura</h3>
+          <div style="font-size: 12px; font-weight: 600; margin-bottom: 6px;">Tema Visual:</div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; margin-bottom: 12px;">
+            <button class="btn btn-outline" onclick="setTheme('theme-alba')">Alba (Claro)</button>
+            <button class="btn btn-outline" onclick="setTheme('theme-sepia')">Sépia Mosteiro</button>
+            <button class="btn btn-outline" onclick="setTheme('theme-dark')">Noturno</button>
+          </div>
+
+          <div style="font-size: 12px; font-weight: 600; margin-bottom: 6px;">Tamanho da Letra:</div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 6px;">
+            <button class="btn btn-outline" onclick="setFontScale(0.9)">90%</button>
+            <button class="btn btn-outline" onclick="setFontScale(1.0)">100%</button>
+            <button class="btn btn-outline" onclick="setFontScale(1.15)">115%</button>
+            <button class="btn btn-outline" onclick="setFontScale(1.3)">130%</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 class="card-title">Sinos & Áudio Offline</h3>
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 6px 0;">
+            <div>
+              <div style="font-size: 13px; font-weight: 600;">Sino de Bronze de São Francisco</div>
+              <div style="font-size: 11px; color: var(--text-muted);">Sintetizador acústico tradicional</div>
+            </div>
+            <button class="btn btn-outline" onclick="playChurchBell()">Testar Sino</button>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- Mini Player (appears when Rosary audio is active) -->
+    <div id="global-mini-player" class="mini-player" style="display: none;" onclick="switchAppTab('terco')">
+      <div class="mini-info">
+        <h4 id="mini-title">Coroa Franciscana • Em Oração</h4>
+        <p id="mini-sub">Áudio Sacro Ativo • Toque para retornar</p>
+      </div>
+      <button class="icon-btn" style="color: white;" onclick="event.stopPropagation(); toggleSacredAudio();">
+        <svg id="mini-play-icon" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+      </button>
+    </div>
+
+    <!-- Material 3 Bottom Navigation Bar -->
+    <nav class="bottom-nav">
+      <button class="nav-item active" onclick="switchAppTab('frei-galvao')">
+        <div class="nav-pill">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 9l1.25-2.75L23 5l-2.75-1.25L19 1l-1.25 2.75L15 5l2.75 1.25L19 9zm-7.5.5L9 4 6.5 9.5 1 12l5.5 2.5L9 20l2.5-5.5L17 12l-5.5-2.5zM19 15l-1.25 2.75L15 19l2.75 1.25L19 23l1.25-2.75L23 19l-2.75-1.25L19 15z"/></svg>
+        </div>
+        <span class="nav-label">Frei Galvão</span>
+      </button>
+
+      <button class="nav-item" onclick="switchAppTab('liturgia')">
+        <div class="nav-pill">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"/></svg>
+        </div>
+        <span class="nav-label">Liturgia 1962</span>
+      </button>
+
+      <button class="nav-item" onclick="switchAppTab('terco')">
+        <div class="nav-pill">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1a9 9 0 0 0-9 9v7c0 1.66 1.34 3 3 3h3v-8H5v-2c0-3.87 3.13-7 7-7s7 3.13 7 7v2h-4v8h3c1.66 0 3-1.34 3-3v-7a9 9 0 0 0-9-9z"/></svg>
+        </div>
+        <span class="nav-label">Terços & Áudio</span>
+      </button>
+
+      <button class="nav-item" onclick="switchAppTab('ajustes')">
+        <div class="nav-pill">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+        </div>
+        <span class="nav-label">Ajustes</span>
+      </button>
     </nav>
 
-    <!-- ABA 1: NOVENA DAS PÍLULAS -->
-    <section id="tab-novena" class="card">
-      <div class="card-title">
-        <span>A Grande Novena das Pílulas</span>
-        <span id="novena-progress-text" style="font-size: 13px; color: var(--gold); font-weight: 600;">0 de 9 rezados</span>
-      </div>
-      <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 12px;">
-        Reze durante 9 dias consecutivos. As Pílulas de Frei Galvão são tradicionalmente tomadas no 1º, 5º e 9º dia.
-      </p>
+    <!-- Android Home Indicator -->
+    <div class="home-bar"></div>
+  </div>
 
-      <!-- Carrossel dos 9 Dias -->
-      <div class="days-grid" id="novena-days-grid"></div>
-
-      <!-- Conteúdo do Dia Ativo -->
-      <div id="active-day-box" style="border-top: 1px solid var(--border); padding-top: 16px;">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-          <h3 id="day-title" class="font-serif" style="color: var(--primary); font-size: 18px;"></h3>
-          <span id="day-pill-badge" class="badge-gold" style="background-color: var(--red-rubric); color: white; display: none;">Dia da Pílula</span>
-        </div>
-        <p id="day-virtue" style="font-size: 13px; font-weight: 600; color: var(--gold); margin-bottom: 10px;"></p>
-        
-        <div id="day-pill-instruction" class="pill-alert" style="display: none;"></div>
-
-        <h4 style="font-size: 13px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 6px;">Oração do Dia:</h4>
-        <div id="day-prayer" class="prayer-content font-serif"></div>
-
-        <div style="display: flex; gap: 10px; margin-top: 16px; flex-wrap: wrap;">
-          <button id="btn-toggle-day" class="btn btn-gold" onclick="toggleCurrentDay()">
-            ✓ Marcar Dia como Rezado
-          </button>
-          <button class="btn btn-outline" onclick="resetNovena()">
-            Reiniciar Novena
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <!-- ABA 2: O MISTÉRIO DAS PÍLULAS -->
-    <section id="tab-pilulas" class="card hidden">
-      <h2 class="card-title">Origem e Instruções das Santas Pílulas</h2>
-      <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 16px;">
-        Conheça a história verídica e o procedimento devocional para ingerir as pílulas com fé e respeito à Mãe de Deus.
-      </p>
-
-      <div style="display: flex; gap: 8px; margin-bottom: 16px;">
-        <button class="tab-btn active" onclick="showPillGuide(1, this)">1ª Pílula (1º Dia)</button>
-        <button class="tab-btn" onclick="showPillGuide(2, this)">2ª Pílula (5º Dia)</button>
-        <button class="tab-btn" onclick="showPillGuide(3, this)">3ª Pílula (9º Dia)</button>
+  <!-- Appearance Sheet Modal -->
+  <div id="appearance-modal" class="modal-overlay" onclick="closeAppearanceModal()">
+    <div class="modal-sheet" onclick="event.stopPropagation()">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+        <h3 style="font-family: 'Cinzel', serif; font-size: 16px; color: var(--primary);">Aparência & Leitura Seráfica</h3>
+        <button class="icon-btn" onclick="closeAppearanceModal()">✕</button>
       </div>
 
-      <div id="pill-guide-content" class="prayer-content"></div>
-
-      <div style="margin-top: 20px; background: #FFF9ED; border: 1px solid var(--gold); border-radius: 12px; padding: 16px;">
-        <h3 style="font-size: 16px; color: var(--primary); font-weight: 700; margin-bottom: 6px;">História do Milagre Original:</h3>
-        <p style="font-size: 14px; color: var(--text); line-height: 1.6;">
-          Estando um jovem à beira da morte em razão de fortes dores provocadas por cálculos renais, mandou chamar Frei Galvão. O frade, impedido de comparecer de imediato, escreveu a antífona mariana em 3 papeizinhos recortados e recomendou que o doente os engolisse em forma de pílulas com oração confiante à Virgem Maria. O rapaz expeliu os cálculos e recuperou a saúde perfeita. Desde então, milhares de mães e doentes alcançam socorro pela mesma intercessão.
-        </p>
-      </div>
-    </section>
-
-    <!-- ABA 3: SANTO TERÇO TRADICIONAL (SEM LUMINOSOS) -->
-    <section id="tab-terco" class="card hidden">
-      <div class="card-title">
-        <span>Santo Terço & Coroa Franciscana</span>
-        <span style="font-size: 12px; color: var(--red-rubric); font-weight: 700;">Sem Mistérios Luminosos</span>
-      </div>
-      <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 16px;">
-        Devoção tradicional segundo a piedade clássica e a Coroa das Sete Alegrias da Virgem Maria.
-      </p>
-
-      <div class="mystery-nav">
-        <button class="tab-btn active" onclick="loadRosary('FRANCISCANA', this)">Coroa Franciscana (7 Alegrias)</button>
-        <button class="tab-btn" onclick="loadRosary('GOZOSOS', this)">Gozosos (Seg e Qui)</button>
-        <button class="tab-btn" onclick="loadRosary('DOLOROSOS', this)">Dolorosos (Ter e Sex)</button>
-        <button class="tab-btn" onclick="loadRosary('GLORIOSOS', this)">Gloriosos (Qua, Sáb e Dom)</button>
+      <div style="font-size: 12px; font-weight: 700; color: var(--primary); margin-bottom: 6px;">PALETA DE CORES:</div>
+      <div style="display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px;">
+        <button class="btn btn-outline" style="justify-content: flex-start;" onclick="setTheme('theme-sepia')">📜 Sépia (Pergaminho Franciscano)</button>
+        <button class="btn btn-outline" style="justify-content: flex-start;" onclick="setTheme('theme-alba')">☀️ Claro (Alba Monástica)</button>
+        <button class="btn btn-outline" style="justify-content: flex-start;" onclick="setTheme('theme-dark')">🌙 Escuro (Noturno de Vigília)</button>
       </div>
 
-      <div class="progress-bar-container">
-        <div id="rosary-progress-bar" class="progress-bar"></div>
+      <div style="font-size: 12px; font-weight: 700; color: var(--primary); margin-bottom: 6px;">TAMANHO DO TEXTO:</div>
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px;">
+        <button class="btn btn-outline" onclick="setFontScale(0.9)">90%</button>
+        <button class="btn btn-outline" onclick="setFontScale(1.0)">100%</button>
+        <button class="btn btn-outline" onclick="setFontScale(1.15)">115%</button>
+        <button class="btn btn-outline" onclick="setFontScale(1.3)">130%</button>
       </div>
-
-      <div style="background: #FAF7F2; border: 1px solid var(--border); border-radius: 12px; padding: 20px;">
-        <span id="rosary-step-number" class="decade-badge"></span>
-        <h3 id="rosary-mystery-title" class="font-serif" style="color: var(--primary); font-size: 20px; margin-bottom: 8px;"></h3>
-        <p id="rosary-mystery-desc" style="font-size: 15px; color: var(--text); line-height: 1.7; margin-bottom: 16px;"></p>
-
-        <div style="display: flex; gap: 10px; justify-content: space-between;">
-          <button class="btn btn-outline" onclick="previousRosaryStep()">← Anterior</button>
-          <button class="btn btn-primary" onclick="nextRosaryStep()">Avançar Prece →</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- ABA 4: DEVOCIONÁRIO -->
-    <section id="tab-devocionario" class="card hidden">
-      <h2 class="card-title">Devocionário de São Frei Galvão</h2>
-      <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 16px;">
-        Orações aprovadas para pedir a intercessão do Santo em todas as necessidades corporais e da alma.
-      </p>
-
-      <div style="display: flex; flex-direction: column; gap: 14px;">
-        <div class="prayer-content">
-          <h3 class="font-serif" style="color: var(--primary); font-size: 17px; font-weight: 700; margin-bottom: 6px;">1. Oração Oficial de Canonização</h3>
-          <p class="font-serif" style="font-style: italic; color: #443224;">
-            «Deus, Pai de misericórdia, que fizestes de Santo Antônio de Sant'Ana Galvão um instrumento de caridade e de paz para o Vosso povo, concedei-nos, por sua intercessão, a fidelidade ao Evangelho e o alívio em todas as nossas aflições corporais e espirituais. Dai saúde aos nossos enfermos, proteção às mães e aos nascituros, e a graça que fervorosamente Vos pedimos por Cristo, Nosso Senhor. Amém.»
-          </p>
-        </div>
-
-        <div class="prayer-content">
-          <h3 class="font-serif" style="color: var(--primary); font-size: 17px; font-weight: 700; margin-bottom: 6px;">2. Oração pelas Mães Gestantes e Parto Feliz</h3>
-          <p class="font-serif" style="font-style: italic; color: #443224;">
-            «São Frei Galvão, compassivo protetor das mães que dão à luz, vós que fostes instrumento da graça para tantas famílias aflitas, socorrei as gestantes nesta hora santa. Livrai-as de todo perigo, concedei um parto sereno e guardai as crianças sob o manto imaculado da Virgem Maria. Rogai por nós, servo fiel de Deus. Amém.»
-          </p>
-        </div>
-
-        <div class="prayer-content">
-          <h3 class="font-serif" style="color: var(--primary); font-size: 17px; font-weight: 700; margin-bottom: 6px;">3. Oração pelos Enfermos dos Rins e Cólicas</h3>
-          <p class="font-serif" style="font-style: italic; color: #443224;">
-            «Senhor Jesus, Médico dos corpos e das almas, que concedestes a Frei Galvão o carisma singular de aliviar os sofrimentos dos doentes renais e acalmar as dores agudas, lançai Vosso olhar sobre este enfermo. Pela intercessão de Maria Santíssima e das Santas Pílulas, restaurai-lhe o vigor e a saúde. Amém.»
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ABA 5: LIVRO DE PRECES -->
-    <section id="tab-preces" class="card hidden">
-      <h2 class="card-title">Livro de Preces a Frei Galvão</h2>
-      <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 16px;">
-        Apresente as suas intenções e testemunhe graças alcançadas através do Primeiro Santo do Brasil.
-      </p>
-
-      <form id="form-intention" onsubmit="addIntention(event)" style="background: #FAF8F5; padding: 16px; border-radius: 12px; margin-bottom: 20px; border: 1px solid var(--border);">
-        <div class="form-group">
-          <label>Seu Nome ou Iniciais:</label>
-          <input type="text" id="int-name" class="form-control" required placeholder="Ex: Maria S.">
-        </div>
-        <div class="form-group">
-          <label>Categoria:</label>
-          <select id="int-category" class="form-control">
-            <option value="Saúde & Cura Renal">Saúde & Cura Renal</option>
-            <option value="Gestação & Parto Feliz">Gestação & Parto Feliz</option>
-            <option value="Causa Urgente de Família">Causa Urgente de Família</option>
-            <option value="Ação de Graças">Ação de Graças</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Intenção de Oração:</label>
-          <textarea id="int-text" class="form-control" rows="3" required placeholder="Escreva a sua intenção aos pés de Frei Galvão..."></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Registrar Prece</button>
-      </form>
-
-      <div id="intentions-list"></div>
-    </section>
+    </div>
   </div>
 
   <script>
-    // --- DADOS DA NOVENA DE SÃO FREI GALVÃO ---
-    const NOVENA_DATA = [
+    // --- NOVENA DATA ---
+    const NOVENA_DAYS = [
+      { day: 1, isPill: true, title: "1º Dia — O Dom da Fé e Caridade Seráfica", virtue: "Fé Viva e Devoção Mariana", instruction: "💊 Tome a 1ª Pílula de Frei Galvão com água, rezando 1 Pai Nosso, 1 Ave Maria e a antífona: «Depois do parto, ó Virgem, permaneceste intacta: Mãe de Deus, intercedei por nós!».", prayer: "Senhor Deus, Pai de infinita bondade, que em São Frei Galvão destes ao Brasil um luminoso exemplo de caridade evangélica, concedei-me uma fé ardente e inabalável. Apresento-vos a minha aflição e rogo, pelas mãos da Virgem Imaculada, a graça que Vos peço com fervor. Amém." },
+      { day: 2, isPill: false, title: "2º Dia — Pureza Imaculada e Voto de Sangue", virtue: "Amor Filial a Nossa Senhora", instruction: "", prayer: "Ó Santíssima Virgem Maria, a quem São Frei Galvão consagrou todo o seu ser com o histórico voto de sangue de 1766, acolhei o meu coração. Livrai-me de toda mancha de pecado e dai-me serenidade na provação presente. Amém." },
+      { day: 3, isPill: false, title: "3º Dia — Mansidão e Auxílio aos Aflitos", virtue: "Paciência e Doçura Cristã", instruction: "", prayer: "São Frei Galvão, pacificador das almas, olhai para a tempestade que perturba a minha família. Vós que acolhestes os pecadores e desamparados nas ruas de São Paulo, trazei a bênção da concórdia e do auxílio de Deus. Amém." },
+      { day: 4, isPill: false, title: "4º Dia — Zelo pelo Templo e Oração Perpétua", virtue: "Espírito de Oração e Penitência", instruction: "", prayer: "Vós que edificastes com as próprias mãos o Mosteiro da Luz, ensinai-me a fazer do meu lar um santuário de oração. Não permitais que eu desfaleça nas horas de dor, mas sustentai-me com a esperança do Céu. Amém." },
+      { day: 5, isPill: true, title: "5º Dia — Proteção às Mães e Parto Pacífico", virtue: "Intercessão pelas Mães e Gestantes", instruction: "💊 Tome a 2ª Pílula de Frei Galvão com oração confiante pelas gestantes e enfermos graves.", prayer: "São Frei Galvão, consolador dos corações aflitos, intercedei pelas gestantes e pelas mães que padecem em partos perigosos. Restituí a paz àqueles que choram e socorrei os que confiam na vossa mediação. Amém." },
+      { day: 6, isPill: false, title: "6º Dia — Cura dos Males Renais e do Corpo", virtue: "Alívio dos Sofrimentos e Saúde", instruction: "", prayer: "Pai celeste, que pelo poder do Nome de Jesus e pela intercessão da Mãe de Deus concedestes a Frei Galvão livrar os doentes de cólicas mortais e cálculos renais, fazei jorrar a cura sobre o meu corpo e sobre aqueles que amo. Amém." },
+      { day: 7, isPill: false, title: "7º Dia — Devoção Eucarística e Louvor", virtue: "Piedade Franciscana e Adoração", instruction: "", prayer: "Humilde frade seráfico, cuja alma transbordava de júbilo diante do Santíssimo Sacramento, alcançai-me profundo fervor na Eucaristia e a força para carregar a minha cruz diária sem revolta. Amém." },
+      { day: 8, isPill: false, title: "8º Dia — O Prodígio da Bilocação e Ministério da Paz", virtue: "Prontidão no Socorro ao Próximo", instruction: "", prayer: "Vós que fostes conduzido misteriosamente em espírito às margens do Tietê para ministrar os últimos sacramentos a quem se afogava, vinde em socorro da minha alma na hora de maior perigo e desamparo. Amém." },
+      { day: 9, isPill: true, title: "9º Dia — Perseverança Final e Louvor Eterno", virtue: "Vitória na Fé e Ação de Graças", instruction: "💊 Tome a 3ª Pílula com o coração repleto de ação de graças pelas graças alcançadas!", prayer: "Deus eterno e fiel, que coroastes com a glória dos Santos o Vosso servo Antônio de Sant'Ana Galvão, confirmai em nós a certeza do Vosso amor. Concedei-me a graça que ardentemente Vos implorei nesta novena, para Vosso louvor perpétuo. Amém." }
+    ];
+
+    // --- LITURGIA 1962 DATA ---
+    const LITURGY_DAYS = [
       {
-        day: 1,
-        title: "1º Dia — O Dom da Fé e Caridade Seráfica",
-        virtue: "Fé Viva e Devoção Mariana",
-        isPill: true,
-        pillInstruction: "💊 Dia da 1ª Pílula: Tome a 1ª pílula com água rezando 1 Pai Nosso, 1 Ave Maria, 1 Glória e a antífona: «Depois do parto, ó Virgem, permaneceste intacta: Mãe de Deus, intercedei por nós!».",
-        prayer: "Senhor Deus, Pai de infinita bondade, que em São Frei Galvão destes ao Brasil um luminoso exemplo de caridade evangélica, concedei-me uma fé ardente e inabalável. Apresento-vos a minha aflição e rogo, pelas mãos da Virgem Imaculada, a graça que Vos peço com fervor. Amém."
+        id: "10-04",
+        name: "04/10 • São Francisco",
+        title: "São Francisco de Assis, Confessor",
+        season: "Tempo depois de Pentecostes",
+        classRank: "IIIª Classe (Iª Classe Seráfica)",
+        color: "Branco",
+        colorHex: "#EFEFEA",
+        colorText: "#000",
+        introit: {
+          pt: "Longe de mim gloriar-me, a não ser na cruz de nosso Senhor Jesus Cristo, pela qual o mundo está crucificado para mim, e eu para o mundo.",
+          lat: "Mihi autem absit gloriari, nisi in cruce Domini nostri Iesu Christi: per quem mihi mundus crucifixus est, et ego mundo."
+        },
+        collect: {
+          pt: "Ó Deus, que pelos méritos do bem-aventurado Francisco dilatastes a vossa Igreja com o nascimento de uma nova família: concedei-nos que, a seu exemplo, desprezemos as coisas terrenas e nos alegremos na eterna participação dos dons celestes.",
+          lat: "Deus, qui Ecclesiam tuam, beati Francisci meritis foetura novae prolis amplificas: tribue nobis; ex eius imitatione, terrena despicere, et caelestium donorum semper participatione gaudere."
+        },
+        epistle: {
+          ref: "Gálatas 6, 14-18",
+          pt: "Irmãos: Longe de mim gloriar-me a não ser na cruz de nosso Senhor Jesus Cristo... Trago em meu corpo as marcas de Jesus. A graça de nosso Senhor Jesus Cristo esteja com o vosso espírito, irmãos. Amém.",
+          lat: "Fratres: Mihi autem absit gloriari, nisi in cruce Domini nostri Iesu Christi... Ego enim stigmata Domini Iesu in corpore meo porto. Gratia Domini nostri Iesu Christi cum spiritu vestro, fratres. Amen."
+        },
+        gospel: {
+          ref: "Mateus 11, 25-30",
+          pt: "Naquele tempo, Jesus disse: 'Eu te louvo, Pai, Senhor do céu e da terra, porque escondeste estas coisas aos sábios e entendidos e as revelaste aos pequeninos... Tomai sobre vós o meu jugo e aprendei de mim, porque sou manso e humilde de coração.'",
+          lat: "In illo tempore: Respondens Iesus, dixit: Confiteor tibi, Pater, Domine caeli et terrae, quia abscondisti haec a sapientibus... Tollite iugum meum super vos, et discite a me, quia mitis sum, et humilis corde."
+        }
       },
       {
-        day: 2,
-        title: "2º Dia — Pureza Imaculada e Voto de Sangue",
-        virtue: "Amor Filial a Nossa Senhora",
-        isPill: false,
-        prayer: "Ó Santíssima Virgem Maria, a quem São Frei Galvão consagrou todo o seu ser com o histórico voto de sangue de 1766, acolhei o meu coração. Livrai-me de toda mancha de pecado e dai-me serenidade na provação presente. Amém."
+        id: "10-25",
+        name: "25/10 • São Frei Galvão",
+        title: "Santo Antônio de Sant'Ana Galvão, Confessor",
+        season: "Tempo depois de Pentecostes",
+        classRank: "Festa Própria do Brasil",
+        color: "Branco",
+        colorHex: "#EFEFEA",
+        colorText: "#000",
+        introit: {
+          pt: "O justo florescerá como a palmeira e crescerá como o cedro do Líbano; plantado na casa do Senhor, nos átrios da casa de nosso Deus.",
+          lat: "Iustus ut palma florebit: sicut cedrus Libani multiplicabitur: plantatus in domo Domini, in atriis domus Dei nostri."
+        },
+        collect: {
+          pt: "Deus, Pai de misericórdia, que fizestes de São Frei Galvão um instrumento de concórdia e caridade para os enfermos e mães angustiadas: concedei-nos por sua intercessão alcançar a paz nesta vida e a glória na eternidade.",
+          lat: "Deus, qui beatum Antonium de Sancta Anna Galvão caritatis et pacis ministrum constituisti: concede, quaesumus; ut eius intercessione sanitatem et gaudium consequamur."
+        },
+        epistle: {
+          ref: "1 Coríntios 13, 1-8",
+          pt: "Ainda que eu fale as línguas dos homens e dos anjos, se não tiver caridade, sou como o bronze que soa. A caridade é paciente, é benigna... A caridade nunca falha.",
+          lat: "Si linguis hominum loquar, et Angelorum, caritatem autem non habeam, factus sum velut aes sonans... Caritas patiens est, benigna est. Caritas numquam excidit."
+        },
+        gospel: {
+          ref: "Lucas 12, 35-40",
+          pt: "Estejam cingidos os vossos rins e acesas as vossas lâmpadas, e sede vós semelhantes aos homens que esperam o seu senhor voltar das bodas.",
+          lat: "Sint lumbi vestri praecincti, et lucernae ardentes in manibus vestris, et vos similes hominibus expectantibus dominum suum."
+        }
       },
       {
-        day: 3,
-        title: "3º Dia — Mansidão e Auxílio aos Desesperados",
-        virtue: "Paciência e Doçura Cristã",
-        isPill: false,
-        prayer: "São Frei Galvão, pacificador das almas, olhai para a tempestade que perturba a minha família. Vós que acolhestes os pecadores e desamparados nas ruas de São Paulo, trazei a bênção da concórdia e do auxílio de Deus. Amém."
-      },
-      {
-        day: 4,
-        title: "4º Dia — Zelo pela Casa do Senhor e Oração Perpétua",
-        virtue: "Espírito de Oração e Penitência",
-        isPill: false,
-        prayer: "Vós que edificastes com as próprias mãos o Mosteiro da Luz, ensinai-me a fazer do meu lar um santuário de oração. Não permitais que eu desfaleça nas horas de dor, mas sustente-me com a esperança do Céu. Amém."
-      },
-      {
-        day: 5,
-        title: "5º Dia — Proteção às Mães e Parto Pacífico",
-        virtue: "Intercessão pelas Mães e Gestantes",
-        isPill: true,
-        pillInstruction: "💊 Dia da 2ª Pílula: Tome a 2ª pílula com fé com 1 Pai Nosso, 1 Ave Maria e a antífona mariana em intenção dos doentes e das mães gestantes.",
-        prayer: "São Frei Galvão, consolador dos corações aflitos, intercedei pelas gestantes e pelas mães que padecem em partos perigosos. Restituí a paz àqueles que choram à beira de um leito hospitalar e socorrei os que confiam na vossa mediação. Amém."
-      },
-      {
-        day: 6,
-        title: "6º Dia — Cura dos Males Renais e do Corpo",
-        virtue: "Alívio dos Sofrimentos e Saúde",
-        isPill: false,
-        prayer: "Pai celeste, que pelo poder do Nome de Jesus e pela intercessão da Mãe de Deus concedestes a Frei Galvão livrar os doentes de cólicas mortais e cálculos renais, fazei jorrar a cura sobre o meu corpo e sobre aqueles que amo. Amém."
-      },
-      {
-        day: 7,
-        title: "7º Dia — Devoção Eucarística e Amor ao Sacrifício",
-        virtue: "Piedade Franciscana e Adoração",
-        isPill: false,
-        prayer: "Humilde frade seráfico, cuja alma transbordava de júbilo diante do Santíssimo Sacramento, alcançai-me profundo fervor na Eucaristia e a força para suportar a minha cruz diária sem revolta. Amém."
-      },
-      {
-        day: 8,
-        title: "8º Dia — O Prodígio da Bilocação e Ministério da Paz",
-        virtue: "Prontidão no Socorro ao Próximo",
-        isPill: false,
-        prayer: "Vós que fostes conduzido misteriosamente em espírito às margens do Tietê para ministrar os últimos sacramentos a um homem que se afogava, vinde em socorro da minha alma na hora de maior perigo e desamparo. Amém."
-      },
-      {
-        day: 9,
-        title: "9º Dia — Perseverança Final e Louvor Eterno",
-        virtue: "Vitória na Fé e Ação de Graças",
-        isPill: true,
-        pillInstruction: "💊 Dia da 3ª Pílula: Tome a 3ª pílula com profunda ação de graças, rezando a Oração Oficial e a Salve Rainha.",
-        prayer: "Deus eterno e fiel, que coroastes com a glória dos Santos o Vosso servo Antônio de Sant'Ana Galvão, confirmai em nós a certeza do Vosso amor. Concedei-me a graça que ardentemente Vos implorei nesta novena, para Vosso louvor perpétuo. Amém."
+        id: "12-08",
+        name: "08/12 • Imaculada Conceição",
+        title: "A Imaculada Conceição da B. V. Maria",
+        season: "Tempo do Advento",
+        classRank: "Iª Classe Soleníssima",
+        color: "Branco",
+        colorHex: "#EFEFEA",
+        colorText: "#000",
+        introit: {
+          pt: "Alegro-me grandemente no Senhor e a minha alma exulta no meu Deus; porque me vestiu de vestes de salvação e me cobriu com o manto da justiça.",
+          lat: "Gaudens gaudebo in Domino, et exsultabit anima mea in Deo meo: quia induit me vestimentis salutis, et indumento iustitiae circumdedit me."
+        },
+        collect: {
+          pt: "Ó Deus, que pela Imaculada Conceição da Virgem preparastes para vosso Filho uma morada digna Dele: preservastes-a de toda mancha em previsão da morte do mesmo vosso Filho.",
+          lat: "Deus, qui per immaculatam Virginis Conceptionem dignum Filio tuo habitaculum praeparasti: praesta, quaesumus; ut, qui ex morte eiusdem Filii tui praevisa, eam ab omni labe praeservasti."
+        },
+        epistle: {
+          ref: "Provérbios 8, 22-35",
+          pt: "O Senhor me possuiu no princípio de seus caminhos, desde o começo, antes que criasse qualquer coisa... Quando preparava os céus, eu estava presente.",
+          lat: "Dominus possedit me in initio viarum suarum, antequam quidquam faceret a principio... Quando praeparabat caelos, aderam."
+        },
+        gospel: {
+          ref: "Lucas 1, 26-28",
+          pt: "O Anjo Gabriel foi enviado por Deus a uma cidade da Galileia chamada Nazaré, a uma virgem... E disse-lhe: 'Ave, cheia de graça, o Senhor é contigo: bendita és tu entre as mulheres.'",
+          lat: "Missus est Angelus Gabriel a Deo in civitatem Galilaeae... Et ingressus Angelus ad eam dixit: Ave gratia plena: Dominus tecum: benedicta tu in mulieribus."
+        }
       }
     ];
 
-    // --- DADOS DO TERÇO CATÓLICO TRADICIONAL (SEM LUMINOSOS) ---
-    const ROSARY_DATA = {
-      FRANCISCANA: {
-        title: "Coroa Franciscana das 7 Alegrias de Nossa Senhora",
-        steps: [
-          { title: "1ª Alegria", text: "A Anunciação do Arcanjo São Gabriel e a Encarnação do Verbo no ventre puríssimo de Maria." },
-          { title: "2ª Alegria", text: "A Visitação de Nossa Senhora a sua prima Santa Isabel e a santificação de São João Batista." },
-          { title: "3ª Alegria", text: "O Nascimento de Nosso Senhor Jesus Cristo na pobre gruta de Belém." },
-          { title: "4ª Alegria", text: "A Adoração dos Três Reis Magos que oferecem ouro, incenso e mirra ao Menino Deus." },
-          { title: "5ª Alegria", text: "O Encontro do Menino Jesus no Templo entre os Doutores da Lei." },
-          { title: "6ª Alegria", text: "A Ressurreição Gloriosa de Nosso Senhor Jesus Cristo ao terceiro dia." },
-          { title: "7ª Alegria", text: "A Assunção e Coroação de Maria Santíssima como Rainha dos Céus e da Terra." }
+    // --- ROSARY DATA ---
+    const ROSARY_MYSTERIES = {
+      FRANCISCAN: {
+        title: "Coroa Franciscana (7 Alegrias)",
+        totalBeads: 72,
+        mysteries: [
+          { title: "1ª Alegria: A Anunciação", text: "A alegria da Virgem Maria com o anúncio do Arcanjo Gabriel e a Encarnação do Verbo Divino." },
+          { title: "2ª Alegria: A Visitação", text: "A alegria da Virgem ao visitar Santa Isabel e a santificação de São João Batista." },
+          { title: "3ª Alegria: O Nascimento", text: "A alegria de dar à luz o Menino Jesus na pobreza da gruta de Belém." },
+          { title: "4ª Alegria: Adoração dos Magos", text: "A alegria de ver os sábios do Oriente prostrados diante do Salvador." },
+          { title: "5ª Alegria: O Encontro no Templo", text: "A alegria de encontrar Jesus entre os doutores após três dias de busca aflita." },
+          { title: "6ª Alegria: A Ressurreição", text: "A alegria indescritível ao contemplar Cristo triunfante sobre a morte." },
+          { title: "7ª Alegria: A Assunção e Coroação", text: "A alegria de ser elevada aos céus de corpo e alma e coroada Rainha." }
         ]
       },
-      GOZOSOS: {
-        title: "Mistérios Gozosos (Tradição: Segundas e Quintas)",
-        steps: [
-          { title: "1º Mistério", text: "A Anunciação do Anjo a Nossa Senhora." },
-          { title: "2º Mistério", text: "A Visita de Maria a sua prima Santa Isabel." },
+      JOYFUL: {
+        title: "Mistérios Gozosos (Tradicionais)",
+        totalBeads: 53,
+        mysteries: [
+          { title: "1º Mistério", text: "A Anunciação do Arcanjo a Maria Santíssima." },
+          { title: "2º Mistério", text: "A Visita de Nossa Senhora a sua prima Isabel." },
           { title: "3º Mistério", text: "O Nascimento de Jesus no presépio de Belém." },
           { title: "4º Mistério", text: "A Apresentação do Menino Jesus no Templo." },
           { title: "5º Mistério", text: "A Perda e o Encontro de Jesus no Templo." }
         ]
       },
-      DOLOROSOS: {
-        title: "Mistérios Dolorosos (Tradição: Terças e Sextas)",
-        steps: [
+      SORROWFUL: {
+        title: "Mistérios Dolorosos (Tradicionais)",
+        totalBeads: 53,
+        mysteries: [
           { title: "1º Mistério", text: "A Agonia de Nosso Senhor no Horto das Oliveiras." },
-          { title: "2º Mistério", text: "A Flagelação cruel de Jesus atado à coluna." },
-          { title: "3º Mistério", text: "A Coroação de espinhos de Nosso Salvador." },
-          { title: "4º Mistério", text: "Jesus carrega a pesada Cruz a caminho do Calvário." },
+          { title: "2º Mistério", text: "A Flagelação cruel de Jesus amarrado à coluna." },
+          { title: "3º Mistério", text: "A Coroação de Espinhos de Nosso Redentor." },
+          { title: "4º Mistério", text: "Jesus carrega a pesada Cruz rumo ao Calvário." },
           { title: "5º Mistério", text: "A Crucificação e Morte de Nosso Senhor Jesus Cristo." }
         ]
       },
-      GLORIOSOS: {
-        title: "Mistérios Gloriosos (Tradição: Quartas, Sábados e Domingos)",
-        steps: [
-          { title: "1º Mistério", text: "A Ressurreição Triunfante de Nosso Senhor Jesus Cristo." },
-          { title: "2º Mistério", text: "A Admirável Ascensão de Jesus Cristo aos Céus." },
+      GLORIOUS: {
+        title: "Mistérios Gloriosos (Tradicionais)",
+        totalBeads: 53,
+        mysteries: [
+          { title: "1º Mistério", text: "A Ressurreição Gloriosa de Jesus Cristo." },
+          { title: "2º Mistério", text: "A Admirável Ascensão de Jesus aos Céus." },
           { title: "3º Mistério", text: "A Descida do Espírito Santo sobre Nossa Senhora e os Apóstolos." },
-          { title: "4º Mistério", text: "A Assunção Gloriosa de Maria Santíssima ao Céu em corpo e alma." },
-          { title: "5º Mistério", text: "A Coroação de Maria como Rainha de todos os Anjos e Santos." }
+          { title: "4º Mistério", text: "A Assunção de Maria Santíssima aos Céus em corpo e alma." },
+          { title: "5º Mistério", text: "A Coroação de Maria Santíssima como Rainha dos Céus e da Terra." }
+        ]
+      },
+      MERCY: {
+        title: "Terço da Divina Misericórdia",
+        totalBeads: 53,
+        mysteries: [
+          { title: "1ª Dezena", text: "Eterno Pai, eu Vos ofereço o Corpo e o Sangue, Alma e Divindade de Vosso diletíssimo Filho..." },
+          { title: "2ª Dezena", text: "Pela Sua dolorosa Paixão, tende misericórdia de nós e do mundo inteiro." },
+          { title: "3ª Dezena", text: "Pela Sua dolorosa Paixão, tende misericórdia de nós e do mundo inteiro." },
+          { title: "4ª Dezena", text: "Pela Sua dolorosa Paixão, tende misericórdia de nós e do mundo inteiro." },
+          { title: "5ª Dezena", text: "Deus Santo, Deus Forte, Deus Imortal, tende piedade de nós e do mundo inteiro." }
         ]
       }
     };
 
-    // --- ESTADO LOCAL ---
+    // --- APP STATE ---
+    let currentAppTab = 'frei-galvao';
     let currentNovenaDay = 1;
-    let completedNovenaDays = JSON.parse(localStorage.getItem('frei_galvao_completed') || '[]');
-    let currentRosaryKey = 'FRANCISCANA';
-    let currentRosaryStep = 0;
-    let intentions = JSON.parse(localStorage.getItem('frei_galvao_intentions') || '[]');
+    let completedNovenaDays = JSON.parse(localStorage.getItem('pax_novena_done') || '[]');
+    let currentLitDate = '10-25';
+    let currentLitMode = 'both';
+    let currentRosaryType = 'FRANCISCAN';
+    let currentBeadIndex = 0;
+    let audioPlaying = false;
+    let audioCtx = null;
+    let droneOsc1 = null;
+    let droneOsc2 = null;
+    let droneGain = null;
 
+    let intentions = JSON.parse(localStorage.getItem('pax_intentions') || '[]');
     if (intentions.length === 0) {
       intentions = [
-        { id: '1', name: 'Família Souza', category: 'Saúde & Cura Renal', text: 'Pela saúde dos rins e alívio das dores.', prayers: 12, grace: false },
-        { id: '2', name: 'Ana Paula R.', category: 'Gestação & Parto Feliz', text: 'Pela proteção de uma gestação serena e parto abençoado.', prayers: 28, grace: true }
+        { id: '1', name: 'Família Souza', cat: 'Saúde & Cura', text: 'Pela cura de enfermidade renal e alívio das cólicas.', prayers: 15, grace: true },
+        { id: '2', name: 'Maria Helena R.', cat: 'Gestação & Parto', text: 'Por um parto abençoado pelas mãos de Frei Galvão.', prayers: 32, grace: false }
       ];
     }
 
-    // --- FUNÇÕES DE NAVEGAÇÃO DE ABAS ---
-    function switchTab(tabName) {
-      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-      const activeNavBtn = Array.from(document.querySelectorAll('.tabs-nav .tab-btn'))
-        .find(btn => btn.getAttribute('onclick')?.includes(tabName));
-      if (activeNavBtn) activeNavBtn.classList.add('active');
-
-      document.querySelectorAll('section.card').forEach(sec => sec.classList.add('hidden'));
-      const activeSection = document.getElementById('tab-' + tabName);
-      if (activeSection) activeSection.classList.remove('hidden');
+    // --- SOUND SYNTHESIZER (WEB AUDIO API) ---
+    function initAudio() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
     }
 
-    // --- LÓGICA DA NOVENA ---
-    function renderNovenaDays() {
-      const grid = document.getElementById('novena-days-grid');
-      grid.innerHTML = '';
+    // Realistic bronze church bell chime synthesis
+    function playChurchBell() {
+      initAudio();
+      const t = audioCtx.currentTime;
+      const freqs = [440, 880, 1200, 1760];
+      const gains = [0.4, 0.25, 0.15, 0.08];
 
-      NOVENA_DATA.forEach(d => {
-        const isSelected = d.day === currentNovenaDay;
+      freqs.forEach((f, idx) => {
+        const osc = audioCtx.createOscillator();
+        const g = audioCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(f, t);
+
+        g.gain.setValueAtTime(gains[idx], t);
+        g.gain.exponentialRampToValueAtTime(0.0001, t + 2.8);
+
+        osc.connect(g);
+        g.connect(audioCtx.destination);
+        osc.start(t);
+        osc.stop(t + 3.0);
+      });
+    }
+
+    // Monastic drone / sacred choir tone
+    function toggleSacredAudio() {
+      initAudio();
+      const btn = document.getElementById('btn-audio-drone');
+      const mini = document.getElementById('global-mini-player');
+      const icon = document.getElementById('mini-play-icon');
+
+      if (audioPlaying) {
+        // Stop
+        if (droneGain) {
+          droneGain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.8);
+          setTimeout(() => {
+            if (droneOsc1) { droneOsc1.stop(); droneOsc1.disconnect(); }
+            if (droneOsc2) { droneOsc2.stop(); droneOsc2.disconnect(); }
+          }, 900);
+        }
+        audioPlaying = false;
+        btn.classList.remove('btn-primary');
+        btn.classList.add('btn-gold');
+        btn.querySelector('span').innerText = 'Áudio Sacro';
+        mini.style.display = 'none';
+      } else {
+        // Start
+        droneOsc1 = audioCtx.createOscillator();
+        droneOsc2 = audioCtx.createOscillator();
+        droneGain = audioCtx.createGain();
+
+        droneOsc1.type = 'sine';
+        droneOsc1.frequency.setValueAtTime(146.83, audioCtx.currentTime); // D3
+
+        droneOsc2.type = 'triangle';
+        droneOsc2.frequency.setValueAtTime(220.00, audioCtx.currentTime); // A3 (pure 5th)
+
+        droneGain.gain.setValueAtTime(0.0001, audioCtx.currentTime);
+        droneGain.gain.exponentialRampToValueAtTime(0.12, audioCtx.currentTime + 1.5);
+
+        droneOsc1.connect(droneGain);
+        droneOsc2.connect(droneGain);
+        droneGain.connect(audioCtx.destination);
+
+        droneOsc1.start();
+        droneOsc2.start();
+
+        audioPlaying = true;
+        btn.classList.remove('btn-gold');
+        btn.classList.add('btn-primary');
+        btn.querySelector('span').innerText = 'Pausar Áudio';
+
+        // Update Mini player
+        document.getElementById('mini-title').innerText = ROSARY_MYSTERIES[currentRosaryType].title;
+        mini.style.display = 'flex';
+        icon.innerHTML = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>';
+        playChurchBell();
+      }
+    }
+
+    // --- NAVIGATION ---
+    function switchAppTab(tabKey) {
+      currentAppTab = tabKey;
+      document.querySelectorAll('.bottom-nav .nav-item').forEach(btn => btn.classList.remove('active'));
+      const index = ['frei-galvao', 'liturgia', 'terco', 'ajustes'].indexOf(tabKey);
+      if (index !== -1) {
+        document.querySelectorAll('.bottom-nav .nav-item')[index].classList.add('active');
+      }
+
+      document.querySelectorAll('.app-screen').forEach(s => s.style.display = 'none');
+      const activeScreen = document.getElementById('screen-' + tabKey);
+      if (activeScreen) activeScreen.style.display = 'block';
+
+      const sTitle = document.getElementById('screen-title');
+      const sSub = document.getElementById('screen-subtitle');
+      const litBadge = document.getElementById('header-liturgy-badge');
+
+      if (tabKey === 'frei-galvao') {
+        sTitle.innerText = "São Frei Galvão";
+        sSub.innerText = "Novena das Pílulas, Devoções & Milagres";
+        litBadge.style.display = 'none';
+      } else if (tabKey === 'liturgia') {
+        sTitle.innerText = "Liturgia 1962";
+        sSub.innerText = "Missal Tradicional Tridentino";
+        litBadge.style.display = 'inline-block';
+      } else if (tabKey === 'terco') {
+        sTitle.innerText = "Terços & Devocionais";
+        sSub.innerText = ROSARY_MYSTERIES[currentRosaryType].title;
+        litBadge.style.display = 'none';
+      } else if (tabKey === 'ajustes') {
+        sTitle.innerText = "Lembretes & Ajustes";
+        sSub.innerText = "Horas Canônicas & Leitura Seráfica";
+        litBadge.style.display = 'none';
+      }
+    }
+
+    function switchFreiSubtab(subId, btn) {
+      document.querySelectorAll('#screen-frei-galvao .chip-tab').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+
+      ['novena', 'pilulas', 'devocoes', 'preces'].forEach(id => {
+        const el = document.getElementById('subtab-' + id);
+        if (el) el.style.display = (id === subId) ? 'block' : 'none';
+      });
+    }
+
+    // --- NOVENA LOGIC ---
+    function renderNovena() {
+      const row = document.getElementById('novena-days-row');
+      row.innerHTML = '';
+
+      NOVENA_DAYS.forEach(d => {
+        const isSel = d.day === currentNovenaDay;
         const isDone = completedNovenaDays.includes(d.day);
-
-        const chip = document.createElement('div');
-        chip.className = `day-chip ${isSelected ? 'active' : ''} ${isDone ? 'completed' : ''}`;
-        chip.onclick = () => selectNovenaDay(d.day);
-
-        chip.innerHTML = `
-          <span style="font-size: 13px; font-weight: 700;">Dia ${d.day}</span>
-          ${d.isPill ? '<span class="pill-tag">💊 Pílula</span>' : '<span style="font-size: 9px; color:#888;">Oração</span>'}
-          ${isDone ? '<span style="color:#2E7D32; font-size:10px; font-weight:bold;">✓ Feito</span>' : ''}
+        const box = document.createElement('div');
+        box.className = `day-box ${isSel ? 'active' : ''} ${isDone ? 'done' : ''}`;
+        box.onclick = () => selectNovenaDay(d.day);
+        box.innerHTML = `
+          <div style="font-size: 11px; font-weight: 700;">D${d.day}</div>
+          ${d.isPill ? '<div style="font-size: 8px; color:var(--rubric-red); font-weight:bold;">💊</div>' : '<div style="font-size: 8px; color:var(--text-muted);">✝</div>'}
+          ${isDone ? '<div style="font-size: 8px; color:#2E7D32;">✓</div>' : ''}
         `;
-        grid.appendChild(chip);
+        row.appendChild(box);
       });
 
-      document.getElementById('novena-progress-text').innerText = `${completedNovenaDays.length} de 9 rezados`;
+      document.getElementById('novena-progress-badge').innerText = `${completedNovenaDays.length} de 9 dias rezados`;
     }
 
     function selectNovenaDay(dayNum) {
       currentNovenaDay = dayNum;
-      const dayData = NOVENA_DATA.find(d => d.day === dayNum) || NOVENA_DATA[0];
+      const d = NOVENA_DAYS.find(item => item.day === dayNum);
+      document.getElementById('day-title').innerText = d.title;
+      document.getElementById('day-virtue').innerText = `Virtude: ${d.virtue}`;
+      document.getElementById('day-prayer').innerText = d.prayer;
 
-      document.getElementById('day-title').innerText = dayData.title;
-      document.getElementById('day-virtue').innerText = `Virtude: ${dayData.virtue}`;
-      document.getElementById('day-prayer').innerText = dayData.prayer;
-
-      const pillBadge = document.getElementById('day-pill-badge');
-      const pillInstr = document.getElementById('day-pill-instruction');
-      if (dayData.isPill) {
-        pillBadge.style.display = 'inline-block';
-        pillInstr.style.display = 'block';
-        pillInstr.innerText = dayData.pillInstruction;
+      const pBadge = document.getElementById('pill-badge');
+      const pInstr = document.getElementById('pill-instruction');
+      if (d.isPill) {
+        pBadge.style.display = 'inline-block';
+        pInstr.style.display = 'block';
+        pInstr.innerText = d.instruction;
       } else {
-        pillBadge.style.display = 'none';
-        pillInstr.style.display = 'none';
+        pBadge.style.display = 'none';
+        pInstr.style.display = 'none';
       }
 
-      updateToggleButton();
-      renderNovenaDays();
-    }
-
-    function updateToggleButton() {
       const btn = document.getElementById('btn-toggle-day');
-      const isDone = completedNovenaDays.includes(currentNovenaDay);
-      if (isDone) {
-        btn.innerText = `✓ Dia ${currentNovenaDay} Rezado (Clique para desmarcar)`;
-        btn.className = 'btn btn-gold';
+      if (completedNovenaDays.includes(dayNum)) {
+        btn.innerText = "✓ Dia Rezado (Desmarcar)";
+        btn.className = "btn btn-outline";
       } else {
-        btn.innerText = `Marcar Dia ${currentNovenaDay} como Rezado`;
-        btn.className = 'btn btn-primary';
+        btn.innerText = "Marcar como Rezado";
+        btn.className = "btn btn-gold";
       }
+
+      renderNovena();
     }
 
     function toggleCurrentDay() {
       if (completedNovenaDays.includes(currentNovenaDay)) {
-        completedNovenaDays = completedNovenaDays.filter(d => d !== currentNovenaDay);
+        completedNovenaDays = completedNovenaDays.filter(x => x !== currentNovenaDay);
       } else {
         completedNovenaDays.push(currentNovenaDay);
+        playChurchBell();
       }
-      localStorage.setItem('frei_galvao_completed', JSON.stringify(completedNovenaDays));
-      updateToggleButton();
-      renderNovenaDays();
+      localStorage.setItem('pax_novena_done', JSON.stringify(completedNovenaDays));
+      selectNovenaDay(currentNovenaDay);
     }
 
     function resetNovena() {
-      if (confirm('Deseja reiniciar o progresso da Novena das Pílulas?')) {
+      if (confirm('Reiniciar o progresso da Novena das Pílulas?')) {
         completedNovenaDays = [];
-        localStorage.setItem('frei_galvao_completed', JSON.stringify([]));
+        localStorage.setItem('pax_novena_done', JSON.stringify([]));
         selectNovenaDay(1);
       }
     }
 
-    // --- GUIA DAS PÍLULAS ---
-    const PILL_TEXTS = {
-      1: "<strong>1ª Pílula (1º Dia da Novena):</strong><br>1. Faça o Sinal da Cruz com fé viva.<br>2. Tome a primeira pílula com um pouco de água.<br>3. Reze 1 Pai Nosso, 1 Ave Maria, 1 Glória.<br>4. Recite com devoção: <em>«Depois do parto, ó Virgem, permaneceste intacta: Mãe de Deus, intercedei por nós!»</em>.",
-      2: "<strong>2ª Pílula (5º Dia da Novena):</strong><br>1. Renove a intenção de oração a Frei Galvão com serenidade.<br>2. Tome a segunda pílula com água.<br>3. Reze a oração pelos enfermos ou gestantes e medite no auxílio materno da Virgem Maria.<br>4. Repita a antífona mariana 3 vezes.",
-      3: "<strong>3ª Pílula (9º Dia da Novena):</strong><br>1. Tome a terceira pílula com ação de graças a Deus.<br>2. Reze a Oração Oficial de Frei Galvão e a Salve Rainha.<br>3. Pratique um ato de caridade em honra do Santo."
-    };
+    // --- LITURGY 1962 LOGIC ---
+    function renderLiturgyDates() {
+      const c = document.getElementById('liturgy-dates-scroll');
+      c.innerHTML = '';
+      LITURGY_DAYS.forEach(d => {
+        const btn = document.createElement('button');
+        btn.className = `chip-tab ${d.id === currentLitDate ? 'active' : ''}`;
+        btn.innerText = d.name;
+        btn.onclick = () => selectLiturgyDay(d.id);
+        c.appendChild(btn);
+      });
+    }
 
-    function showPillGuide(num, btn) {
-      document.querySelectorAll('#tab-pilulas .tab-btn').forEach(b => b.classList.remove('active'));
+    function selectLiturgyDay(id) {
+      currentLitDate = id;
+      renderLiturgyDates();
+      const d = LITURGY_DAYS.find(x => x.id === id);
+
+      document.getElementById('lit-season').innerText = d.season;
+      document.getElementById('lit-day-title').innerText = d.title;
+      document.getElementById('lit-class').innerText = d.classRank;
+
+      const chip = document.getElementById('lit-color-chip');
+      chip.innerText = d.color;
+      chip.style.background = d.colorHex;
+      chip.style.color = d.colorText;
+
+      const headerChip = document.getElementById('header-liturgy-badge');
+      headerChip.innerText = d.color;
+      headerChip.style.background = d.colorHex;
+      headerChip.style.color = d.colorText;
+
+      renderPropers(d);
+    }
+
+    function setLiturgyMode(mode, btn) {
+      currentLitMode = mode;
+      document.querySelectorAll('#screen-liturgia .chip-tab').forEach(b => {
+        if (['Bilíngue', 'Português', 'Latim'].includes(b.innerText)) b.classList.remove('active');
+      });
       if (btn) btn.classList.add('active');
-      document.getElementById('pill-guide-content').innerHTML = PILL_TEXTS[num];
+      const d = LITURGY_DAYS.find(x => x.id === currentLitDate);
+      renderPropers(d);
     }
 
-    // --- LÓGICA DO SANTO TERÇO ---
-    function loadRosary(key, btn) {
-      currentRosaryKey = key;
-      currentRosaryStep = 0;
-      if (btn) {
-        document.querySelectorAll('.mystery-nav .tab-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-      }
-      updateRosaryView();
-    }
-
-    function updateRosaryView() {
-      const ros = ROSARY_DATA[currentRosaryKey];
-      const step = ros.steps[currentRosaryStep];
-      const total = ros.steps.length;
-
-      document.getElementById('rosary-step-number').innerText = `${step.title} (${currentRosaryStep + 1} de ${total})`;
-      document.getElementById('rosary-mystery-title').innerText = step.title;
-      document.getElementById('rosary-mystery-desc').innerText = step.text;
-
-      const progress = ((currentRosaryStep + 1) / total) * 100;
-      document.getElementById('rosary-progress-bar').style.width = `${progress}%`;
-    }
-
-    function nextRosaryStep() {
-      const total = ROSARY_DATA[currentRosaryKey].steps.length;
-      if (currentRosaryStep < total - 1) {
-        currentRosaryStep++;
-      } else {
-        alert('Terço concluído com a proteção de Nossa Senhora e São Frei Galvão!');
-        currentRosaryStep = 0;
-      }
-      updateRosaryView();
-    }
-
-    function previousRosaryStep() {
-      if (currentRosaryStep > 0) {
-        currentRosaryStep--;
-        updateRosaryView();
-      }
-    }
-
-    // --- LÓGICA DO LIVRO DE PRECES ---
-    function renderIntentions() {
-      const container = document.getElementById('intentions-list');
+    function renderPropers(d) {
+      const container = document.getElementById('liturgy-propers-container');
       container.innerHTML = '';
 
-      intentions.forEach(item => {
+      const propers = [
+        { name: 'Intróito', data: d.introit },
+        { name: 'Coleta (Oração)', data: d.collect },
+        { name: `Epístola (${d.epistle.ref})`, data: d.epistle },
+        { name: `Santo Evangelho (${d.gospel.ref})`, data: d.gospel }
+      ];
+
+      propers.forEach(p => {
         const div = document.createElement('div');
-        div.className = 'intention-item';
-        div.innerHTML = `
-          <div style="flex: 1;">
-            <div style="display: flex; gap: 8px; align-items: center; margin-bottom: 4px;">
-              <strong>${item.name}</strong>
-              <span style="font-size: 11px; background: #EEE3D3; padding: 2px 6px; border-radius: 4px; font-weight: 600;">${item.category}</span>
-              ${item.grace ? '<span style="font-size: 11px; background: #C59B27; color: black; padding: 2px 6px; border-radius: 4px; font-weight: 700;">★ Graça Alcançada</span>' : ''}
+        div.className = 'proper-box';
+
+        let html = `<div class="proper-title"><span>${p.name}</span></div>`;
+
+        if (currentLitMode === 'both') {
+          html += `
+            <div class="bilingual-grid">
+              <div>
+                <div style="font-size:10px; font-weight:700; color:var(--gold); margin-bottom:2px;">PORTUGUÊS</div>
+                <div class="proper-content">${p.data.pt}</div>
+              </div>
+              <div>
+                <div style="font-size:10px; font-weight:700; color:var(--primary); margin-bottom:2px;">LATIM</div>
+                <div class="proper-content" style="font-style:italic;">${p.data.lat}</div>
+              </div>
             </div>
-            <p style="font-size: 14px; color: #4A3A2C; margin-bottom: 8px;">${item.text}</p>
-            <div style="display: flex; gap: 8px;">
-              <button class="btn btn-outline" style="padding: 4px 10px; font-size: 12px;" onclick="prayForIntention('${item.id}')">
-                🙏 Rezar por esta prece (${item.prayers})
-              </button>
-              <button class="btn btn-outline" style="padding: 4px 10px; font-size: 12px;" onclick="toggleGrace('${item.id}')">
-                ${item.grace ? 'Desmarcar Graça' : '★ Testemunhar Graça'}
-              </button>
-            </div>
+          `;
+        } else if (currentLitMode === 'pt') {
+          html += `<div class="proper-content">${p.data.pt}</div>`;
+        } else {
+          html += `<div class="proper-content" style="font-style:italic;">${p.data.lat}</div>`;
+        }
+
+        div.innerHTML = html;
+        container.appendChild(div);
+      });
+    }
+
+    // --- ROSARY LOGIC ---
+    function selectRosary(typeKey, btn) {
+      currentRosaryType = typeKey;
+      currentBeadIndex = 0;
+      document.querySelectorAll('#screen-terco .chip-tab').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+
+      document.getElementById('screen-subtitle').innerText = ROSARY_MYSTERIES[typeKey].title;
+      document.getElementById('rosary-title').innerText = ROSARY_MYSTERIES[typeKey].title;
+      renderRosary();
+    }
+
+    function renderRosary() {
+      const data = ROSARY_MYSTERIES[currentRosaryType];
+      document.getElementById('rosary-counter').innerText = `Conta ${currentBeadIndex + 1} de ${data.totalBeads}`;
+
+      // Render Visual Beads
+      const c = document.getElementById('beads-visualizer');
+      c.innerHTML = '';
+      const stepCount = Math.min(data.totalBeads, 30);
+      for (let i = 0; i < stepCount; i++) {
+        const b = document.createElement('div');
+        const isDecadeLead = (i % 10 === 0);
+        b.className = `bead ${isDecadeLead ? 'large' : ''} ${i < currentBeadIndex ? 'done' : ''} ${i === currentBeadIndex ? 'current' : ''}`;
+        c.appendChild(b);
+      }
+
+      // Mystery info
+      const mIndex = Math.min(Math.floor(currentBeadIndex / 10), data.mysteries.length - 1);
+      const curMystery = data.mysteries[mIndex];
+
+      document.getElementById('bead-type-badge').innerText = `Mistério ${mIndex + 1}`;
+      document.getElementById('current-prayer-title').innerText = curMystery.title;
+      document.getElementById('current-prayer-text').innerText = curMystery.text;
+    }
+
+    function nextBead() {
+      const max = ROSARY_MYSTERIES[currentRosaryType].totalBeads;
+      if (currentBeadIndex < max - 1) {
+        currentBeadIndex++;
+        if (currentBeadIndex % 10 === 0) {
+          playChurchBell(); // Chime on each decade completed
+        }
+      } else {
+        alert('Terço concluído sob a bênção de Nossa Senhora e São Frei Galvão! Deo gratias.');
+        currentBeadIndex = 0;
+        playChurchBell();
+      }
+      renderRosary();
+    }
+
+    function prevBead() {
+      if (currentBeadIndex > 0) {
+        currentBeadIndex--;
+        renderRosary();
+      }
+    }
+
+    // --- INTENTIONS LOGIC ---
+    function renderIntentions() {
+      const c = document.getElementById('intentions-container');
+      c.innerHTML = '';
+      intentions.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+            <strong style="font-size: 13px;">${item.name}</strong>
+            <span style="font-size: 10px; background: var(--surface-variant); padding: 2px 6px; border-radius: 4px; font-weight: 600;">${item.cat}</span>
+          </div>
+          <p style="font-size: 13px; color: var(--text); margin-bottom: 8px;">${item.text}</p>
+          <div style="display: flex; gap: 8px;">
+            <button class="btn btn-outline" style="padding: 4px 10px; font-size: 11px;" onclick="prayForIntention('${item.id}')">
+              🙏 Rezar (${item.prayers})
+            </button>
+            <button class="btn btn-outline" style="padding: 4px 10px; font-size: 11px; ${item.grace ? 'border-color:var(--gold); color:var(--gold-dark);' : ''}" onclick="toggleGrace('${item.id}')">
+              ${item.grace ? '★ Graça Alcançada!' : 'Testemunhar Graça'}
+            </button>
           </div>
         `;
-        container.appendChild(div);
+        c.appendChild(card);
       });
     }
 
     function addIntention(e) {
       e.preventDefault();
       const name = document.getElementById('int-name').value.trim();
-      const category = document.getElementById('int-category').value;
+      const cat = document.getElementById('int-cat').value;
       const text = document.getElementById('int-text').value.trim();
-
       if (!name || !text) return;
 
-      const newInt = {
-        id: Date.now().toString(),
-        name,
-        category,
-        text,
-        prayers: 1,
-        grace: false
-      };
-
-      intentions.unshift(newInt);
-      localStorage.setItem('frei_galvao_intentions', JSON.stringify(intentions));
+      intentions.unshift({ id: Date.now().toString(), name, cat, text, prayers: 1, grace: false });
+      localStorage.setItem('pax_intentions', JSON.stringify(intentions));
       renderIntentions();
 
       document.getElementById('int-name').value = '';
       document.getElementById('int-text').value = '';
-      alert('Prece confiada à intercessão de São Frei Galvão!');
+      playChurchBell();
+      alert('Sua prece foi colocada sob a intercessão de Frei Galvão!');
     }
 
     function prayForIntention(id) {
       intentions = intentions.map(i => i.id === id ? { ...i, prayers: i.prayers + 1 } : i);
-      localStorage.setItem('frei_galvao_intentions', JSON.stringify(intentions));
+      localStorage.setItem('pax_intentions', JSON.stringify(intentions));
       renderIntentions();
+      playChurchBell();
     }
 
     function toggleGrace(id) {
       intentions = intentions.map(i => i.id === id ? { ...i, grace: !i.grace } : i);
-      localStorage.setItem('frei_galvao_intentions', JSON.stringify(intentions));
+      localStorage.setItem('pax_intentions', JSON.stringify(intentions));
       renderIntentions();
     }
 
-    // Inicialização ao carregar a página
+    // --- REMINDERS LIST ---
+    const REMINDERS = [
+      { name: "Angelus da Manhã", time: "06:00", active: true },
+      { name: "Laudes Monásticas", time: "07:00", active: false },
+      { name: "Angelus do Meio-Dia", time: "12:00", active: true },
+      { name: "Angelus da Tarde", time: "18:00", active: true },
+      { name: "Vésperas Tradicionais", time: "19:00", active: true },
+      { name: "Completas & Repouso", time: "21:30", active: false }
+    ];
+
+    function renderReminders() {
+      const c = document.getElementById('reminders-list');
+      c.innerHTML = '';
+      REMINDERS.forEach((r, idx) => {
+        const d = document.createElement('div');
+        d.style = "display: flex; justify-content: space-between; align-items: center; padding: 8px 10px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px;";
+        d.innerHTML = `
+          <div>
+            <div style="font-size: 13px; font-weight: 600;">${r.name}</div>
+            <div style="font-size: 11px; color: var(--gold); font-weight: 700;">${r.time}</div>
+          </div>
+          <input type="checkbox" ${r.active ? 'checked' : ''} style="width: 18px; height: 18px; accent-color: var(--primary); cursor: pointer;" onchange="REMINDERS[${idx}].active = this.checked">
+        `;
+        c.appendChild(d);
+      });
+    }
+
+    // --- THEME & APPEARANCE ---
+    function setTheme(themeClass) {
+      document.body.className = themeClass;
+      localStorage.setItem('pax_theme', themeClass);
+    }
+
+    function setFontScale(scale) {
+      document.documentElement.style.setProperty('--font-scale', scale);
+      localStorage.setItem('pax_font_scale', scale);
+    }
+
+    function openAppearanceModal() {
+      document.getElementById('appearance-modal').classList.add('open');
+    }
+    function closeAppearanceModal() {
+      document.getElementById('appearance-modal').classList.remove('open');
+    }
+
+    // Clock
+    function updateClock() {
+      const now = new Date();
+      const h = String(now.getHours()).padStart(2, '0');
+      const m = String(now.getMinutes()).padStart(2, '0');
+      document.getElementById('live-clock').innerText = `${h}:${m}`;
+    }
+
+    // --- INITIALIZATION ---
     window.addEventListener('DOMContentLoaded', () => {
+      updateClock();
+      setInterval(updateClock, 10000);
+
+      // Restore stored appearance
+      const savedTheme = localStorage.getItem('pax_theme') || 'theme-sepia';
+      setTheme(savedTheme);
+      const savedFont = localStorage.getItem('pax_font_scale') || '1';
+      setFontScale(savedFont);
+
+      // Setup tabs & screens
+      renderNovena();
       selectNovenaDay(1);
-      showPillGuide(1);
-      loadRosary('FRANCISCANA');
+      renderLiturgyDates();
+      selectLiturgyDay('10-25');
+      renderRosary();
       renderIntentions();
+      renderReminders();
     });
   </script>
 </body>
